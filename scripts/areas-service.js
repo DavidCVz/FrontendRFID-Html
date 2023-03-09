@@ -26,3 +26,7 @@ btnConsultarTodasAreas.addEventListener('click', () => {
 
 });
 
+async function obtenerTodasAreas(){
+    
+}
+
