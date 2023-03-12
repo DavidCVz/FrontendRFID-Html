@@ -100,6 +100,7 @@
                 <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Crear area </a></li>
                 <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Consultar areas </a></li>
                 <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Eliminar areas </a></li>
+                <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"> Modificar areas </a></li>
               </ul>
               <div class="tab-content">
                 <!-- CREAR -->
@@ -168,9 +169,42 @@
                           </div>
                         </div>
                       </div>
-                      <button id="btnEliminarArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="submit">Eliminar area</button>               
+                      <button id="btnEliminarArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Eliminar area</button>               
                     </div>
                   </form>
+                  <!-- MENSAJE DE ERROR -->
+                  <div id="msjEliminarAreas" role="alert">
+                  </div>
+                </div>
+                <!-- MODIFICAR -->
+                <div role="tabpanel" class="tab-pane fade" id="tab4">
+                  <div class="col-md-6 mb-3">
+                    <form class="needs-validation" novalidate="">
+                      <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                          <label for="idAreaModificar">Area</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="idAreaModificar" placeholder="Id" value="" required="">
+                          </div>
+                        </div>
+                        <button id="btnBuscarArea" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Buscar area</button>               
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label for="nombreAreaModificar">Nombre</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="nombreAreaModificar" placeholder="Nombre del area" value="" required="">
+                      <div class="valid-feedback">
+                        <!-- Looks good! -->
+                      </div>
+                    </div>
+                  </div>
+                  <button id="btnGuardarArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Guardar</button>               
+                  <!-- MENSAJE DE ERROR -->
+                  <div id="msjModificarArea" role="alert">
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,13 +240,12 @@
 
 
   <!-- SCRIPTS DE RFID -->
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!--Conexion-->  
   <script src="scripts/conexionAPI.js"></script>
   <!--Servicio para areas-->  
   <script src="scripts/areas-service.js"></script>
-  <!-- Axios -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
 
 </body>
 

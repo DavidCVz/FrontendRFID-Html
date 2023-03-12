@@ -2,7 +2,7 @@ console.log('Funcionando');
 
 //CONEXION CON AXIOS
 const api = axios.create({
-    baseURL: 'http://localhost:5242'
+	baseURL: 'http://localhost:5242'
 });
 
 //CONEXION CON FETCH
