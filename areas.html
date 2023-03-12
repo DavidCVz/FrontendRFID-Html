@@ -107,7 +107,17 @@
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
-                        <label for="nombreAreaCrear">Area</label>
+                        <label for="idAreaCrear">ID</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="idAreaCrear" placeholder="Id area" value="" required="">
+                          <div class="valid-feedback">
+                            <!-- Looks good! -->
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="nombreAreaCrear">Nombre</label>
                         <div class="input-group">
                           <input type="text" class="form-control" id="nombreAreaCrear" placeholder="Nombre del area" value="" required="">
                           <div class="valid-feedback">
@@ -115,7 +125,8 @@
                           </div>
                         </div>
                       </div>
-                      <button id="btnCrearArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3 " type="submit">Crear area</button>
+
+                      <button id="btnCrearArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3" type="button">Crear area</button><!-- type="submit" -->
                     </div>
                   </form>
                 </div>
@@ -136,7 +147,10 @@
                       <button id="btnConsultarTodoAreas" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Consultar todo</button>
                     </div>
                   </form>
-
+                  <!-- MENSAJE DE ERROR -->
+                  <div id="msjErrorAreas" role="alert">
+                  </div>
+                  <!-- TABLA DE CONSULTA -->
                   <div class="table-responsive">
                     <table id="areas-table" class="table table-striped thead-primary w-100"></table>
                   </div>
@@ -196,6 +210,8 @@
   <script src="scripts/conexionAPI.js"></script>
   <!--Servicio para areas-->  
   <script src="scripts/areas-service.js"></script>
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   
 
 </body>
