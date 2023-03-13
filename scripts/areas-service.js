@@ -1,13 +1,14 @@
 //const URL = 'http://localhost:5242/area';
 console.log('ENTRA A AREAS SERVICE');
 
-
 //Botones
 let btnConsultarTodasAreas = document.querySelector('#btnConsultarTodoAreas');
 let btnAgregarArea = document.getElementById('btnCrearArea');
 let btnEliminarArea = document.getElementById('btnEliminarArea');
 let btnBuscarArea = document.getElementById('btnBuscarArea');
 let btnGuardarArea = document.getElementById('btnGuardarArea');
+let btnResetBuscarArea = document.getElementById('btnResetBuscarArea');
+let btnResetCrearArea = document.getElementById('btnResetCrearArea');
 
 //Campos
 let txtNombreAreaCrear = document.querySelector('#nombreAreaCrear');
@@ -17,6 +18,7 @@ let txtidAreaModificar = document.querySelector('#idAreaModificar');
 let txtnombreAreaModificar = document.querySelector('#nombreAreaModificar');
 
 //Componentes del Html
+let msjCrearArea = document.querySelector('#msjCrearArea');
 let msjErrorAreas = document.querySelector('#msjErrorAreas');
 let msjEliminarAreas = document.querySelector('#msjEliminarAreas');
 let msjModificarArea = document.querySelector('#msjModificarArea');
@@ -32,6 +34,16 @@ btnAgregarArea.addEventListener('click', () =>{
     registrarArea();
 });
 
+btnResetCrearArea.addEventListener('click', () => {
+    // Reset de mensajes
+    msjCrearArea.classList.remove('alert', 'alert-danger' || 'alert-success');
+    msjCrearArea.innerHTML = '';
+
+    // Reset campos
+    txtIdAreaCrear.value = '';
+    txtNombreAreaCrear.value = '';
+})
+
 btnEliminarArea.addEventListener('click', () => {
     eliminarArea();
 });
@@ -41,28 +53,71 @@ btnBuscarArea.addEventListener('click', () => {
 });
 
 btnGuardarArea.addEventListener('click', () => {
-    
+    modificarArea();
 });
+
+btnResetBuscarArea.addEventListener('click', () => {
+    // Reset de campos
+    txtidAreaModificar.value = '';
+    txtnombreAreaModificar.value = '';
+    txtidAreaModificar.removeAttribute("readonly");
+
+    // Reset de mensajes
+    msjModificarArea.classList.remove('alert', 'alert-danger');
+    msjModificarArea.innerHTML = '';
+})
 
 
 //FUNCIONES DE EVENTOS
+
+async function registrarArea(){
+
+    // Reset de mensajes
+    msjCrearArea.classList.remove('alert', 'alert-danger' || 'alert-success');
+    msjCrearArea.innerHTML = '';
+
+    // PETICION POST CON AXIOS *****************
+    const { data, status } =  await api.post('/area',{
+        AreaID: parseInt(txtIdAreaCrear.value),
+        Nombre: String(txtNombreAreaCrear.value),
+    });
+
+    if (status !== 200) {
+        msjCrearArea.classList.add('alert', 'alert-danger');
+        msjCrearArea.innerHTML = ('ERROR: ' + status);
+        console.log('ERROR: ' + status);
+    }else{
+        msjCrearArea.classList.add('alert', 'alert-success');
+        msjCrearArea.innerHTML = 'Area creada correctamente';
+        console.log({data});
+    }
+    // Realiza la petición POST en el endpoint USANDO FETCH --------------
+    /*const resultado = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            AreaID: parseInt(txtIdAreaCrear.value),
+            Nombre: String(txtNombreAreaCrear.value),
+        }),
+    }).catch(error => {console.log(error)});
+    console.log("Termina FETCh");
+    const data = await resultado.json(); */
+}
+
+
 async function obtenerAreas(){
     //Reset de mensajes
     msjErrorAreas.classList.remove('alert', 'alert-danger');
-    msjErrorAreas.classList.innerHTML = '';
+    msjErrorAreas.innerHTML = '';
     
     // Dataset que contendra la info que se mostrara en la tabla
     let dataSetAreas = [];
     //$("#areas-table").dataTable().fnDestroy();
 
     // PETICION GET CON AXIOS *****************
-    const { data, status } =  await api.get('/area',{});
-
-    // PETICION GET CON FETCH *****************
-    /*  // Realiza la petición en el endpoint
-    const resultado = await fetch(URL);
-    // Obtiene una instancia del resultado y lo transforma en Json
-    const data = await resultado.json(); */    
+    const { data, status } =  await api.get('/area',{}); 
 
     // Evalúa si la peticion regresó 200 OK
     if (status !== 200) {
@@ -84,37 +139,6 @@ async function obtenerAreas(){
     }
 }
 
-async function registrarArea(){
-    // PETICION GET CON AXIOS *****************
-    const { data, status } =  await api.post('/area',{
-        AreaID: parseInt(txtIdAreaCrear.value),
-        Nombre: String(txtNombreAreaCrear.value),
-    });
-
-    // Realiza la petición POST en el endpoint USANDO FETCH --------------
-    console.log(parseInt(txtIdAreaCrear.value));
-    console.log(String(txtNombreAreaCrear.value));
-/*     const resultado = await fetch(URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            AreaID: parseInt(txtIdAreaCrear.value),
-            Nombre: String(txtNombreAreaCrear.value),
-        }),
-    }).catch(error => {console.log(error)});
-    console.log("Termina FETCh");
-    const data = await resultado.json(); */
-
-    if (status !== 200) {
-        console.log('ERROR: ' + status);
-    }else{
-        console.log({data});
-    }
-
-    // PETICION POST CON AXIOS
-}
 
 async function eliminarArea(){
     console.log('ENTRA A eliminar');
@@ -141,18 +165,60 @@ async function eliminarArea(){
 async function obtenerArea(){
     //Reset de mensajes
     msjModificarArea.classList.remove('alert', 'alert-danger');
-    msjModificarArea.classList.innerHTML = '';
+    msjModificarArea.innerHTML = '';
+    txtidAreaModificar.removeAttribute("readonly", "");
+
+    // Revision de campo vacio
+    if (txtidAreaModificar.value === '') { 
+        msjModificarArea.classList.add('alert', 'alert-danger');
+        msjModificarArea.innerHTML = `Por favor ingrese un <strong>Id</strong>`;
+        return; 
+    }
 
     // PETICION GET CON AXIOS *****************
-    const { data, status } =  await api.get(`/area/${parseInt(txtidAreaModificar.value)}`);
+    try{
+        const {data, status} = await api.get(`/area/${parseInt(txtidAreaModificar.value)}`);
 
-    console.log(status);
-    if (status === 200) {
-        txtnombreAreaModificar.value = data.nombre;
-        console.log(data.nombre);
-    }else{
+        switch(status){
+            case 200:
+                txtnombreAreaModificar.value = data.nombre;
+                txtidAreaModificar.setAttribute("readonly", "");
+                break;
+            default:
+                console.log(`Default: ${error} ---- ${error.response.status}`);
+                break;
+        }
+    }catch(error){
         msjModificarArea.classList.add('alert', 'alert-danger');
-        msjModificarArea.classList.innerHTML = `${data.message}`;
+        msjModificarArea.innerHTML = `<strong>Error ${error.response.status}:</strong> ${error.response.data}`;
+    }
+}
+
+async function modificarArea(){
+    //Reset de mensajes
+    msjModificarArea.classList.remove('alert', 'alert-danger');
+    msjModificarArea.innerHTML = '';
+
+    // PETICION PUT CON AXIOS *****************
+    try{
+        const {data, status} = await api.put(`/area/${parseInt(txtidAreaModificar.value)}`, {
+            Nombre: txtnombreAreaModificar.value,
+        });
+
+        switch(status){
+            case 200:
+                console.log('ENTRA A 200');
+                console.log(data);
+                msjModificarArea.classList.add('alert', 'alert-success');
+                msjModificarArea.innerHTML = data;
+                break;
+            default:
+                console.log(`Default: ${error} ---- ${error.response.status}`);
+                break;
+        }
+    }catch(error){
+        msjModificarArea.classList.add('alert', 'alert-danger');
+        msjModificarArea.innerHTML = `<strong>Error ${error.response.status}:</strong> ${error.response.data}`;
     }
 }
 

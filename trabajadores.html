@@ -53,7 +53,7 @@
                <span><i class="material-icons fs-16">dashboard</i>Ajustes generales </span>
              </a>
             <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
-              <li> <a href="areas.html">Areas</a> </li>
+              <li> <a href="Trabajadores.html">Trabajadores</a> </li>
               <li> <a href="turnos.html"> Turnos </a> </li>
               <li> <a href="trabajadores.html"> Trabajadores </a> </li>
             </ul>
@@ -79,12 +79,12 @@
     <div class="ms-content-wrapper">
       <div class="row">
 
-        <!-- Ajustes generales / Areas -->
+        <!-- Ajustes generales / Trabajadores -->
         <div class="col-md-12">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb pl-0">
               <li class="breadcrumb-item"><a href="index.html"><i class="material-icons">home</i> Ajustes generales</a></li>
-              <li class="breadcrumb-item"><a href="areas.html">Areas</a></li>
+              <li class="breadcrumb-item"><a href="trabajadores.html">Trabajadores</a></li>
             </ol>
           </nav>
         </div>
@@ -97,10 +97,10 @@
             </div>
             <div class="ms-panel-body">
               <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
-                <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Crear area </a></li>
-                <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Consultar areas </a></li>
-                <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Eliminar areas </a></li>
-                <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"> Modificar areas </a></li>
+                <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Crear trabajador </a></li>
+                <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Consultar trabajador </a></li>
+                <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Eliminar trabajador </a></li>
+                <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"> Modificar trabajador </a></li>
               </ul>
               <div class="tab-content">
                 <!-- CREAR -->
@@ -108,9 +108,9 @@
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
-                        <label for="idAreaCrear">ID</label>
+                        <label for="idTrabajadorCrear">ID</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="idAreaCrear" placeholder="Id area" value="" required="">
+                          <input type="text" class="form-control" id="idTrabajadorCrear" placeholder="Id Trabajador" value="" required="">
                           <div class="valid-feedback">
                             <!-- Looks good! -->
                           </div>
@@ -118,35 +118,35 @@
                       </div>
 
                       <div class="col-md-6 mb-3">
-                        <label for="nombreAreaCrear">Nombre</label>
+                        <label for="nombreTrabajadorCrear">Nombre</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="nombreAreaCrear" placeholder="Nombre del area" value="" required="">
+                          <input type="text" class="form-control" id="nombreTrabajadorCrear" placeholder="Nombre del Trabajador" value="" required="">
                           <div class="valid-feedback">
                             <!-- Looks good! -->
                           </div>
                         </div>
                       </div>
 
-                      <button id="btnCrearArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3" type="button">Crear area</button><!-- type="submit" -->
-                      <button id="btnResetCrearArea" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
+                      <button id="btnCrearTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3" type="button">Crear Trabajador</button><!-- type="submit" -->
+                      <button id="btnResetCrearTrabajador" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
                     </div>
                   </form>
-                  <div id="msjCrearArea" role="alert">
+                  <div id="msjCrearTrabajador" role="alert">
                   </div>
                 </div>
                 <!-- CONSULTAR -->
                 <div role="tabpanel" class="tab-pane fade" id="tab2">
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
-                      <button id="btnConsultarTodoAreas" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Consultar todo</button>
+                      <button id="btnConsultarTodoTrabajadores" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Consultar todo</button>
                     </div>
                   </form>
                   <!-- MENSAJE DE ERROR -->
-                  <div id="msjErrorAreas" role="alert">
+                  <div id="msjErrorTrabajadores" role="alert">
                   </div>
                   <!-- TABLA DE CONSULTA -->
                   <div class="table-responsive">
-                    <table id="areas-table" class="table table-striped thead-primary w-100"></table>
+                    <table id="Trabajadores-table" class="table table-striped thead-primary w-100"></table>
                   </div>
                 </div>
                 <!-- ELIMINAR -->
@@ -154,19 +154,19 @@
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
-                        <label for="idNombreAreaEliminar">Area</label>
+                        <label for="idNombreTrabajadorEliminar">Trabajador</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="idNombreAreaEliminar" placeholder="Id / Nombre del area" value="" required="">
+                          <input type="text" class="form-control" id="idNombreTrabajadorEliminar" placeholder="Id / Nombre del Trabajador" value="" required="">
                           <div class="valid-feedback">
                             <!-- Looks good! -->
                           </div>
                         </div>
                       </div>
-                      <button id="btnEliminarArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Eliminar area</button>               
+                      <button id="btnEliminarTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Eliminar Trabajador</button>               
                     </div>
                   </form>
                   <!-- MENSAJE DE ERROR -->
-                  <div id="msjEliminarAreas" role="alert">
+                  <div id="msjEliminarTrabajadores" role="alert">
                   </div>
                 </div>
                 <!-- MODIFICAR -->
@@ -175,29 +175,29 @@
                     <form class="needs-validation" novalidate="">
                       <div class="form-row">
                         <div class="col-md-6 mb-3">
-                          <label for="idAreaModificar">Area</label>
+                          <label for="idTrabajadorModificar">Trabajador</label>
                           <div class="input-group">
-                            <input type="text" class="form-control" id="idAreaModificar" placeholder="Id" value="" required="">
+                            <input type="text" class="form-control" id="idTrabajadorModificar" placeholder="Id" value="" required="">
                           </div>
                         </div>
-                        <button id="btnBuscarArea" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Buscar area</button>               
-                        <button id="btnResetBuscarArea" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
+                        <button id="btnBuscarTrabajador" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Buscar Trabajador</button>               
+                        <button id="btnResetBuscarTrabajador" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
                       </div>
                     </form>
                   </div>
 
                   <div class="col-md-6 mb-3">
-                    <label for="nombreAreaModificar">Nombre</label>
+                    <label for="nombreTrabajadorModificar">Nombre</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" id="nombreAreaModificar" placeholder="Nombre del area" value="" required="">
+                      <input type="text" class="form-control" id="nombreTrabajadorModificar" placeholder="Nombre del Trabajador" value="" required="">
                       <div class="valid-feedback">
                         <!-- Looks good! -->
                       </div>
                     </div>
                   </div>
-                  <button id="btnGuardarArea" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Guardar</button>               
+                  <button id="btnGuardarTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Guardar</button>               
                   <!-- MENSAJE DE ERROR -->
-                  <div id="msjModificarArea" role="alert">
+                  <div id="msjModificarTrabajador" role="alert">
                   </div>
                 </div>
               </div>
@@ -238,8 +238,8 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!--Conexion-->  
   <script src="scripts/conexionAPI.js"></script>
-  <!--Servicio para areas-->  
-  <script src="scripts/areas-service.js"></script>
+  <!--Servicio para Trabajadores-->  
+  <script src="scripts/Trabajadores-service.js"></script>
 
 </body>
 
