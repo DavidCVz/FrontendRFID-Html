@@ -19,10 +19,14 @@
   <link href="assets\css\jquery-ui.min.css" rel="stylesheet">
   <!-- Page Specific CSS (Slick Slider.css) -->
   <link href="assets\css\slick.css" rel="stylesheet">
+  <!-- Page Specific Css (Datatables.css) -->
+  <link href="assets\css\datatables.min.css" rel="stylesheet">
   <!-- Mystic styles -->
   <link href="assets\css\style.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+  <!-- Page Specific CSS (SweetAlerts 2.css) -->
+  <link href="assets\css\sweetalert2.min.css" rel="stylesheet">
 
 </head>
 
@@ -48,7 +52,7 @@
         <!-- Dashboard -->
         <li class="menu-item">
             <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-               <span><i class="material-icons fs-16">dashboard</i>Ajustes generales </span>
+               <span><i class="material-icons fs-16">dashboard</i>Actividad </span>
              </a>
             <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
               <li> <a href="areas.html">Areas</a> </li>
@@ -56,7 +60,7 @@
  -->              <li> <a href="trabajadores.html"> Trabajadores </a> </li>
             </ul>
         </li>
-        <!-- /Charts -->
+
         <!-- Tables -->
         <li class="menu-item">
             <a href="#" class="has-chevron" data-toggle="collapse" data-target="#tables" aria-expanded="false" aria-controls="tables">
@@ -70,13 +74,54 @@
     </ul>
   </aside>
 
-  <!-- Main Content -->
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="body-content">
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper">
       <div class="row">
 
+        <!-- Ajustes generales / Trabajadores -->
+        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pl-0">
+              <li class="breadcrumb-item"><a href="index.html"><i class="material-icons">home</i> Ajustes generales</a></li>
+              <li class="breadcrumb-item"><a href="accesos-trabajadores.html">Acceso de trabajadores</a></li>
+            </ol>
+          </nav>
+        </div>
+
+        <!-- TABS -->
+        <div class="col-md-12">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-header">
+              <h6>Procesos</h6>
+            </div>
+            <div class="ms-panel-body">
+              <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
+                <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Accesos de trabajadores </a></li>
+              </ul>
+              <div class="tab-content">
+                <!-- CREAR -->
+                <div role="tabpanel" class="tab-pane active show fade in" id="tab1">
+                  <form class="needs-validation" novalidate="">
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="rfidCodeCrear">Código RFID</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" data-swal="auto-close-rfid" id="rfidCodeAcceso" placeholder="Código de tarjeta RFID" value="" required="">
+                        </div>
+                      </div>
+                  </form>
+                  <div class="col-md-9 mb-3">
+                    <div id="msjRegistroAcceso" role="alert">
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -95,16 +140,30 @@
   <script src="assets\js\slick.min.js"> </script>
   <script src="assets\js\moment.js"> </script>
   <script src="assets\js\jquery.webticker.min.js"> </script>
-  <script src="assets\js\Chart.bundle.min.js"> </script>
-  <script src="assets\js\Chart.Financial.js"> </script>
-  <script src="assets\js\cryptocurrency.js"> </script>
-  <!-- Page Specific Scripts Finish -->
+  <script src="assets\js\datatables.min.js"> </script>
+<!--   <script src="assets\js\data-tables.js"> </script>
+ -->  <!-- Page Specific Scripts Finish -->
 
   <!-- Mystic core JavaScript -->
   <script src="assets\js\framework.js"></script>
 
   <!-- Settings -->
   <script src="assets\js\settings.js"></script>
+
+  <!-- Page Specific Scripts Start -->
+  <script src="assets\js\promise.min.js"> </script>
+  <script src="assets\js\sweetalert2.min.js"> </script>
+  <script src="scripts/sweet-alerts-rfid.js"> </script>
+  <!-- Page Specific Scripts End -->
+
+
+  <!-- SCRIPTS DE RFID -->
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!--Conexion-->  
+  <script src="scripts/conexionAPI.js"></script>
+  <!--Servicio para Trabajadores-->  
+  <script src="scripts/accesos-trabajador-service.js"></script>
 
 </body>
 
