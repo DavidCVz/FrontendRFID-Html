@@ -6,10 +6,7 @@ const api = axios.create({
 });
 
 //CONEXION CON FETCH
-//const URL = 'http://localhost:5242/area?areaid=88888';
 //const URL = 'http://localhost:5242/area';
-//const URL = 'http://localhost:5242/entradassalidas/historialtrabajador?page=1&id=1111';
-
 
 /* fetch(URL)
     .then(res => res.json())

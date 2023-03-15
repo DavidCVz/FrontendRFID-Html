@@ -221,8 +221,3 @@ async function modificarArea(){
         msjModificarArea.innerHTML = `<strong>Error ${error.response.status}:</strong> ${error.response.data}`;
     }
 }
-
-
-
-
-

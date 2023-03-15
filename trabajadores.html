@@ -53,9 +53,9 @@
                <span><i class="material-icons fs-16">dashboard</i>Ajustes generales </span>
              </a>
             <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
-              <li> <a href="Trabajadores.html">Trabajadores</a> </li>
-              <li> <a href="turnos.html"> Turnos </a> </li>
-              <li> <a href="trabajadores.html"> Trabajadores </a> </li>
+              <li> <a href="areas.html">Areas</a> </li>
+<!--               <li> <a href="turnos.html"> Turnos </a> </li>
+ -->              <li> <a href="trabajadores.html"> Trabajadores </a> </li>
             </ul>
         </li>
 
@@ -65,8 +65,8 @@
               <span><i class="material-icons fs-16">tune</i>Actividad</span>
             </a>
             <ul id="tables" class="collapse" aria-labelledby="tables" data-parent="#side-nav-accordion">
-              <li> <a href="pages\tables\basic-tables.html">Bitacora general de accesos</a> </li>
-              <li> <a href="pages\tables\data-tables.html">Accesos de trabajadores</a> </li>
+              <li> <a href="bitacora-accessos.html">Bitacora general de accesos</a> </li>
+              <li> <a href="accesos-trabajadores.html">Accesos de trabajadores</a> </li>
             </ul>
         </li>
     </ul>
@@ -97,10 +97,10 @@
             </div>
             <div class="ms-panel-body">
               <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
-                <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Crear trabajador </a></li>
+                <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Registrar trabajador </a></li>
                 <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Consultar trabajador </a></li>
                 <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Eliminar trabajador </a></li>
-                <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"> Modificar trabajador </a></li>
+                <li role="presentation"><a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab" id="btnSeccionRegistrarTrabajador"> Modificar trabajador </a></li>
               </ul>
               <div class="tab-content">
                 <!-- CREAR -->
@@ -108,26 +108,77 @@
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
-                        <label for="idTrabajadorCrear">ID</label>
+                        <label for="rfidCodeCrear">Código RFID</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="idTrabajadorCrear" placeholder="Id Trabajador" value="" required="">
-                          <div class="valid-feedback">
-                            <!-- Looks good! -->
+                          <input type="text" class="form-control" id="rfidCodeCrear" placeholder="Código de tarjeta RFID" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="nombresTrabajadorCrear">Nombres</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="nombresTrabajadorCrear" placeholder="Nombres" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="apellidoPaternoCrear">Apellido paterno</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="apellidoPaternoCrear" placeholder="Apellido paterno" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="apellidoMaternoCrear">Apellido materno</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="apellidoMaternoCrear" placeholder="Apellido materno" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="rfcCrear">RFC</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="rfcCrear" placeholder="RFC" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="curpCrear">CURP</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="curpCrear" placeholder="CURP" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-12 mb-12">
+                        <label for="emailCrear">Email</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="emailCrear" placeholder="Email" value="" required="">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-3">
+                        <label for="listaAreas">Area</label>
+                        <div class="input-group">
+                          <select class="form-control" id="listaAreas" required="">
+                          </select>
+                          <div class="invalid-feedback">
+                            Por favor seleccione un area
                           </div>
                         </div>
                       </div>
 
                       <div class="col-md-6 mb-3">
-                        <label for="nombreTrabajadorCrear">Nombre</label>
+                        <label for="listaTurnos">Turno</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="nombreTrabajadorCrear" placeholder="Nombre del Trabajador" value="" required="">
-                          <div class="valid-feedback">
-                            <!-- Looks good! -->
+                          <select class="form-control" id="listaTurnos" required="">
+                          </select>
+                          <div class="invalid-feedback">
+                            Por favor seleccione un turno
                           </div>
                         </div>
                       </div>
 
-                      <button id="btnCrearTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3" type="button">Crear Trabajador</button><!-- type="submit" -->
+                      <button id="btnCrearTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-3" type="button">Registrar</button><!-- type="submit" -->
                       <button id="btnResetCrearTrabajador" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
                     </div>
                   </form>
@@ -138,7 +189,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="tab2">
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
-                      <button id="btnConsultarTodoTrabajadores" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Consultar todo</button>
+                      <button id="btnConsultarTrabajadores" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Consultar todo</button>
                     </div>
                   </form>
                   <!-- MENSAJE DE ERROR -->
@@ -154,15 +205,15 @@
                   <form class="needs-validation" novalidate="">
                     <div class="form-row">
                       <div class="col-md-6 mb-3">
-                        <label for="idNombreTrabajadorEliminar">Trabajador</label>
+                        <label for="idTrabajadorEliminar">Trabajador</label>
                         <div class="input-group">
-                          <input type="text" class="form-control" id="idNombreTrabajadorEliminar" placeholder="Id / Nombre del Trabajador" value="" required="">
+                          <input type="text" class="form-control" id="idTrabajadorEliminar" placeholder="ID del trabajador" value="" required="">
                           <div class="valid-feedback">
                             <!-- Looks good! -->
                           </div>
                         </div>
                       </div>
-                      <button id="btnEliminarTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Eliminar Trabajador</button>               
+                      <button id="btnEliminarTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Eliminar</button>               
                     </div>
                   </form>
                   <!-- MENSAJE DE ERROR -->
@@ -180,21 +231,86 @@
                             <input type="text" class="form-control" id="idTrabajadorModificar" placeholder="Id" value="" required="">
                           </div>
                         </div>
-                        <button id="btnBuscarTrabajador" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Buscar Trabajador</button>               
+                        <button id="btnBuscarTrabajador" class="btn btn-outline-secondary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Buscar</button>               
                         <button id="btnResetBuscarTrabajador" class="ms-btn-icon btn-dark mt-4 mb-4 ml-3 d-block w-100 col-md-1 " type="button"><i class="flaticon-reuse"></i></button>               
                       </div>
                     </form>
                   </div>
-
-                  <div class="col-md-6 mb-3">
-                    <label for="nombreTrabajadorModificar">Nombre</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="nombreTrabajadorModificar" placeholder="Nombre del Trabajador" value="" required="">
-                      <div class="valid-feedback">
-                        <!-- Looks good! -->
+                  <form class="needs-validation" novalidate="">
+                    <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="rfidCodeModificar">Código RFID</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="rfidCodeModificar" placeholder="Código de tarjeta RFID" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="nombresTrabajadorModificar">Nombres</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="nombresTrabajadorModificar" placeholder="Nombres" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="apellidoPaternoModificar">Apellido paterno</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="apellidoPaternoModificar" placeholder="Apellido paterno" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="apellidoMaternoModificar">Apellido materno</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="apellidoMaternoModificar" placeholder="Apellido materno" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="rfcModificar">RFC</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="rfcModificar" placeholder="RFC" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="curpModificar">CURP</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="curpModificar" placeholder="CURP" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-12 mb-12">
+                        <label for="emailModificar">Email</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="emailModificar" placeholder="Email" value="" required="">
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="listaAreasModificar">Area</label>
+                        <div class="input-group">
+                          <select class="form-control" id="listaAreasModificar" required="">
+                          </select>
+                          <div class="invalid-feedback">
+                            Por favor seleccione un area
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6 mb-3">
+                        <label for="listaTurnosModificar">Turno</label>
+                        <div class="input-group">
+                          <select class="form-control" id="listaTurnosModificar" required="">
+                          </select>
+                          <div class="invalid-feedback">
+                            Por favor seleccione un turno
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
+
                   <button id="btnGuardarTrabajador" class="btn btn-outline-primary mt-4 mb-5 ml-3 d-block w-100 col-md-2 " type="button">Guardar</button>               
                   <!-- MENSAJE DE ERROR -->
                   <div id="msjModificarTrabajador" role="alert">
@@ -239,7 +355,7 @@
   <!--Conexion-->  
   <script src="scripts/conexionAPI.js"></script>
   <!--Servicio para Trabajadores-->  
-  <script src="scripts/Trabajadores-service.js"></script>
+  <script src="scripts/trabajador-service.js"></script>
 
 </body>
 
